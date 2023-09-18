@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block content %}
+<main>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Submit</button>
+    </form>
+    {% if graph %}
+    {{ graph|safe }}
+    <p>Source: Federal Reserve and Yahoo Finance</p>
+    {% else %}
+    <p>No graph was provided.</p>
+    {% endif %}
+</main>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Analyses
+{% endblock title %}
+
+{% block content %}
+<main>
+    <h1>Analysis Dashboard</h1>
+    <h2>A dashboard for economic and market data.</h2>
+    <div class="analysis-grid">
+        {% for analysis in analysis_list %}
+        <div>
+            <h3>
+                <a href="{% url 'show_graph' analysis.id %}">{{ analysis.title }}</a>
+            </h3>
+            <img src="{{ analysis.picture | default:'https://via.placeholder.com/200'}}" />
+        </div>
+        {% empty %}
+        <p>Nothing to see here. Go touch some grass.</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}
